@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:02:13 by user              #+#    #+#             */
-/*   Updated: 2023/04/30 15:56:58 by user             ###   ########.fr       */
+/*   Updated: 2023/04/30 23:06:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,12 +129,13 @@ void    ready_objarr(t_fvec *fvecs)
     ball = tmp_obj->ball;
     ball->center_v = malloc(sizeof(t_vecinf) * 1);
     set_vec(ball->center_v, 0, 0, 5);
-    ball->rad = 2.0;
+    ball->rad = 1.0;
     refCoeff_ka(&ball->t_refCoeff, 0.01, 0.01, 0.01);
-    refCoeff_kd(&ball->t_refCoeff, 0.69, 0.00, 0.00);
+    refCoeff_kd(&ball->t_refCoeff, 0.69, 0.69, 0.69);
     refCoeff_ks(&ball->t_refCoeff, 0.30, 0.30, 0.30);
     ball->t_refCoeff.Ia = 0.1;
     ball->t_refCoeff.Ii = 1.0;
+    ball->t_refCoeff.alpha = 8.0;
     ball->has_specmir = false;
     ball->spec_mir = 0;
     //END of setting ballinfo//

@@ -9,7 +9,13 @@ SRCS	=	miniRT_main.c\
 				constructor/ready_fixvectors/ready_lgtarr.c\
 				constructor/ready_fixvectors/ready_objarr.c\
 			exec/draw_pixcel.c\
-			exec/exec_minirt.c
+			exec/grasp_objtype.c\
+			exec/map.c\
+			exec/exec_minirt.c\
+			exec/ch_eye2anyobjs.c\
+				exec/ch_anyits/ch_eye2ball_its.c\
+				exec/calculate_ratio/cal_ratio_ball.c\
+				exec/render_obj/render_ball.c
 
 OBJS = $(SRCS:.c=.o)
 

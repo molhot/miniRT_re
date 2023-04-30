@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 23:39:45 by user              #+#    #+#             */
-/*   Updated: 2023/04/30 16:35:41 by user             ###   ########.fr       */
+/*   Updated: 2023/04/30 23:00:02 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # define BALL 1
 # define PLANE 2
 # define CYLINDER 3
+
+//background define
+# define BACKCOLOR (int)(129 << 16) | (int)(198 << 8) | (int)(39)
 
 // simple vector
 typedef	struct s_vec
@@ -168,6 +171,20 @@ void    ready_objarr(t_fvec *fvecs);
 //exec
 void    exec(t_allinfs *infs);
 void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
+int		obtain_shapetype(t_objarr *sub);
+// check its exist or not
+void    render(t_allinfs *infs, t_vecinf *eye2scr);
+bool	ch_eye2anyobjs(t_allinfs *infs, t_objarr *objarr, t_vecinf *eye2scr);
+bool    ch_eye2ball_its(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball);
+
+//calc retio
+double  calc_ratio_ball(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball);
+
+// render any objects
+void    render_ball(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball, t_lgtarr *lgtarr, double t);
+
+//exec utils
+double map(double num, double min, double max, double t_min, double t_max);
 
 //calculate vector
 void    add_vec(t_vecinf *sub, t_vec *v1, t_vec *v2);//v1 + v2

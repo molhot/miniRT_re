@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:59:08 by user              #+#    #+#             */
-/*   Updated: 2023/04/30 17:36:34 by user             ###   ########.fr       */
+/*   Updated: 2023/04/30 22:55:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,52 @@ static  void	dim2tdim(t_vecinf *dim_vec, double x, double y, double width, doubl
 	set_vec(dim_vec, tdim_x, tdim_y, tdim_z);
 }
 
-static  void    render_obj(t_allinfs *infs, t_vecinf *eye2scr, ssize_t obj_pos)
+static  size_t grasp_objpos(t_objarr *objarr, t_vecinf *eye2scr, t_allinfs *infs)
 {
-    (void)infs;
-    (void)eye2scr;
-    (void)obj_pos;
+    double  t;
+    double  tmp_t;
+    size_t position;
+    size_t  r_pos;
+
+    position = 0;
+    r_pos = 0;
+    t = 0;
+    while (objarr != NULL)
+    {
+        if (obtain_shapetype(objarr) == BALL)
+			tmp_t = calc_ratio_ball(eye2scr, infs, objarr->ball);
+        if ((t == 0 && tmp_t >= 0) || (tmp_t >= 0 && t > tmp_t))
+        {
+            t = tmp_t;
+            r_pos = position;
+        }
+        objarr = objarr->next_obj;
+        position++;
+    }
+    return (r_pos);
+}
+
+static  void    render_obj(t_allinfs *infs, t_vecinf *eye2scr, size_t obj_pos, t_objarr *objarr)
+{
+    while (obj_pos != 0)
+    {
+        objarr = objarr->next_obj;
+        obj_pos--;
+    }
+    if (obtain_shapetype(objarr) == BALL)
+        render_ball(eye2scr, infs, objarr->ball, infs->fix_vecs->lgtarr, calc_ratio_ball(eye2scr, infs, objarr->ball));
 }
 
 void    render(t_allinfs *infs, t_vecinf *eye2scr)
 {
-    ssize_t obj_position;
+    size_t obj_position;
     
     if (ch_eye2anyobjs(infs, infs->fix_vecs->objarr, eye2scr) == false)
         my_mlx_pixel_put(infs->drawinf, infs->drawinf->x, infs->drawinf->y, BACKCOLOR);
     else
     {
-        obj_position = 0;
-        render_obj(infs, eye2scr, obj_position);
+        obj_position = grasp_objpos(infs->fix_vecs->objarr, eye2scr, infs);
+        render_obj(infs, eye2scr, obj_position, infs->fix_vecs->objarr);
     }
 }
 
