@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:59:08 by user              #+#    #+#             */
-/*   Updated: 2023/04/30 22:55:54 by user             ###   ########.fr       */
+/*   Updated: 2023/05/01 01:01:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,10 @@ static  void    render_obj(t_allinfs *infs, t_vecinf *eye2scr, size_t obj_pos, t
 
 void    render(t_allinfs *infs, t_vecinf *eye2scr)
 {
-    size_t obj_position;
-    
     if (ch_eye2anyobjs(infs, infs->fix_vecs->objarr, eye2scr) == false)
         my_mlx_pixel_put(infs->drawinf, infs->drawinf->x, infs->drawinf->y, BACKCOLOR);
     else
-    {
-        obj_position = grasp_objpos(infs->fix_vecs->objarr, eye2scr, infs);
-        render_obj(infs, eye2scr, obj_position, infs->fix_vecs->objarr);
-    }
+        render_obj(infs, eye2scr, grasp_objpos(infs->fix_vecs->objarr, eye2scr, infs), infs->fix_vecs->objarr);
 }
 
 void    exec(t_allinfs *infs)

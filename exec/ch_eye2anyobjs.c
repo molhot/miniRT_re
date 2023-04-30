@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 16:55:24 by user              #+#    #+#             */
-/*   Updated: 2023/04/30 17:25:14 by user             ###   ########.fr       */
+/*   Updated: 2023/05/01 01:05:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool ch_eye2anyobjs(t_allinfs *infs, t_objarr *objarr, t_vecinf *eye2scr)
 {
-    if (objarr != NULL)
+    while (objarr != NULL)
     {
         if (obtain_shapetype(objarr) == BALL)
         {
