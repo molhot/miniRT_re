@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 23:57:29 by user              #+#    #+#             */
-/*   Updated: 2023/04/30 14:53:28 by user             ###   ########.fr       */
+/*   Updated: 2023/04/30 16:42:15 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ void    constructor(t_allinfs *allinf)
     ready_drawinf(allinf->drawinf);
     allinf->fix_vecs = malloc(sizeof(t_fvec) * 1);
     ready_fixvectors(allinf->fix_vecs);
+    allinf->fix_vecs->scr_v = malloc(sizeof(t_vecinf) * 1);
 }

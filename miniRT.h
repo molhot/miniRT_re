@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 23:39:45 by user              #+#    #+#             */
-/*   Updated: 2023/04/30 15:56:18 by user             ###   ########.fr       */
+/*   Updated: 2023/04/30 16:35:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,5 +164,18 @@ void    constructor(t_allinfs *allinf);
 void    ready_eye_v(t_fvec *fvecs);
 void    ready_lgtarr(t_fvec *fvecs);
 void    ready_objarr(t_fvec *fvecs);
+
+//exec
+void    exec(t_allinfs *infs);
+void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
+
+//calculate vector
+void    add_vec(t_vecinf *sub, t_vec *v1, t_vec *v2);//v1 + v2
+void	neg_vec(t_vecinf *sub, t_vec *v1, t_vec *v2);//v1 - v2
+double	dot_vec(t_vec *v1, t_vec *v2);//v1 * v2
+void	calc_outerproduct(t_vecinf *sub, t_vec *v1, t_vec *v2);//v1 × v2
+void    t_mix_vec(t_vecinf *sub, t_vec *v1, double t, t_vec *v2);//v1 + t * v2
+void    t_neg_vec(t_vecinf *sub, t_vec *v1, double t, t_vec *v2);//v1 - t * v2
+void    t_mix_vec_all(t_vecinf *sub, double t1, t_vec *v1, double t2, t_vec *v2);// t1 * v1 + t2 * v2
 
 # endif

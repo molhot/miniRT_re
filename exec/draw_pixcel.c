@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT_main.c                                      :+:      :+:    :+:   */
+/*   draw_pixcel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/29 23:52:50 by user              #+#    #+#             */
-/*   Updated: 2023/04/30 16:39:10 by user             ###   ########.fr       */
+/*   Created: 2023/04/30 16:33:51 by user              #+#    #+#             */
+/*   Updated: 2023/04/30 16:34:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../miniRT.h"
 
-int main()
+void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color)
 {
-    t_allinfs allinfs;
-    
-    constructor(&allinfs);
-    exec(&allinfs);
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
+
