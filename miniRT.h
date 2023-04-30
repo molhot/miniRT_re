@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 23:39:45 by user              #+#    #+#             */
-/*   Updated: 2023/04/30 14:28:09 by user             ###   ########.fr       */
+/*   Updated: 2023/04/30 15:56:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ typedef	struct s_cylinder{
 	t_refCoeff	t_refCoeff;
 	double		rad;
 	double		height;
+	bool		has_specmir;
+	double		spec_mir;
 }t_cylinder;
 
 typedef	struct s_plane{
@@ -154,7 +156,13 @@ typedef struct s_allinfs
 
 //explain functions flaw
 
+//temporaryfunction
+void    set_vec(t_vecinf *vec, double x, double y, double z);
+
 //under sapce is function space
 void    constructor(t_allinfs *allinf);
+void    ready_eye_v(t_fvec *fvecs);
+void    ready_lgtarr(t_fvec *fvecs);
+void    ready_objarr(t_fvec *fvecs);
 
 # endif
