@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 23:39:45 by user              #+#    #+#             */
-/*   Updated: 2023/04/30 23:00:02 by user             ###   ########.fr       */
+/*   Updated: 2023/05/01 00:03:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,9 @@ double  calc_ratio_ball(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball);
 void    render_ball(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball, t_lgtarr *lgtarr, double t);
 
 //exec utils
-double map(double num, double min, double max, double t_min, double t_max);
+double	map(double num, double min, double max, double t_min, double t_max);
+void    init_RGB(t_RGB *RGB);
+void	cal_RGB(t_RGB *origin_RGB, t_RGB *add_RGB, double k);
 
 //calculate vector
 void    add_vec(t_vecinf *sub, t_vec *v1, t_vec *v2);//v1 + v2

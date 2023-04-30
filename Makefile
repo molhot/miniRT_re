@@ -11,6 +11,7 @@ SRCS	=	miniRT_main.c\
 			exec/draw_pixcel.c\
 			exec/grasp_objtype.c\
 			exec/map.c\
+			exec/RGB_handling.c\
 			exec/exec_minirt.c\
 			exec/ch_eye2anyobjs.c\
 				exec/ch_anyits/ch_eye2ball_its.c\
