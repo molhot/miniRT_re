@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:59:08 by user              #+#    #+#             */
-/*   Updated: 2023/04/30 16:45:22 by user             ###   ########.fr       */
+/*   Updated: 2023/04/30 17:36:34 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,24 @@ static  void	dim2tdim(t_vecinf *dim_vec, double x, double y, double width, doubl
 	set_vec(dim_vec, tdim_x, tdim_y, tdim_z);
 }
 
-static  void    render(t_drawinf *drawinf, double x, double y)
+static  void    render_obj(t_allinfs *infs, t_vecinf *eye2scr, ssize_t obj_pos)
 {
-    my_mlx_pixel_put(drawinf, x, y, (int)(120 << 16) | (int)(0 << 8) | (int)0);
+    (void)infs;
+    (void)eye2scr;
+    (void)obj_pos;
+}
+
+void    render(t_allinfs *infs, t_vecinf *eye2scr)
+{
+    ssize_t obj_position;
+    
+    if (ch_eye2anyobjs(infs, infs->fix_vecs->objarr, eye2scr) == false)
+        my_mlx_pixel_put(infs->drawinf, infs->drawinf->x, infs->drawinf->y, BACKCOLOR);
+    else
+    {
+        obj_position = 0;
+        render_obj(infs, eye2scr, obj_position);
+    }
 }
 
 void    exec(t_allinfs *infs)
@@ -45,7 +60,7 @@ void    exec(t_allinfs *infs)
             infs->drawinf->y = y;
             dim2tdim(infs->fix_vecs->scr_v, x, y, (double)infs->drawinf->width, (double)infs->drawinf->height);
             neg_vec(&eye2scr, &infs->fix_vecs->scr_v->vec, &infs->fix_vecs->eye_v->vec);
-            render(infs->drawinf, x, y);
+            render(infs, &eye2scr);
             x++;
         }
         x = 0;
