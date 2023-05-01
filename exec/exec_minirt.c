@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:59:08 by user              #+#    #+#             */
-/*   Updated: 2023/05/02 00:24:21 by user             ###   ########.fr       */
+/*   Updated: 2023/05/02 01:25:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static  void    render_obj(t_allinfs *infs, t_vecinf *eye2scr, size_t obj_pos, t
     if (obtain_shapetype(objarr) == PLANE)
         render_plane(eye2scr, infs, objarr->plane, calc_ratio_plane(eye2scr, infs, objarr->plane));
     if (obtain_shapetype(objarr) == CYLINDER)
-        my_mlx_pixel_put(infs->drawinf, infs->drawinf->x, infs->drawinf->y, (int)(129 << 16) | (int)(100 << 8) | (int)(39));
+        render_cylinder(eye2scr, infs, objarr->cylinder);
 }
 
 void    render(t_allinfs *infs, t_vecinf *eye2scr)

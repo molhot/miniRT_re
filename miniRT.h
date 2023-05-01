@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 23:39:45 by user              #+#    #+#             */
-/*   Updated: 2023/05/01 23:49:31 by user             ###   ########.fr       */
+/*   Updated: 2023/05/02 01:24:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ double  calc_ratio_cylinder(t_vecinf *eye2scr, t_allinfs *infs, t_cylinder *cyli
 // render any objects
 void    render_ball(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball, t_lgtarr *lgtarr, double t);
 void    render_plane(t_vecinf *eye2scr, t_allinfs *infs, t_plane *plane, double t);
+void	render_cylinder(t_vecinf *eye2scr, t_allinfs *infs, t_cylinder *cylinder);
 
 //exec utils
 double	map(double num, double min, double max, double t_min, double t_max);
