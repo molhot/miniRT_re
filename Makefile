@@ -16,8 +16,10 @@ SRCS	=	miniRT_main.c\
 			exec/ch_eye2anyobjs.c\
 				exec/ch_anyits/ch_eye2ball_its.c\
 				exec/ch_anyits/ch_eye2plane_its.c\
+				exec/ch_anyits/ch_eye2cylinder_its.c\
 				exec/calculate_ratio/cal_ratio_ball.c\
 				exec/calculate_ratio/cal_ratio_plane.c\
+				exec/calculate_ratio/cal_ratio_cylinder.c\
 				exec/render_obj/render_ball.c\
 				exec/render_obj/render_plane.c
 

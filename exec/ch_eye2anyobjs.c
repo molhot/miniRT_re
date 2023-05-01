@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 16:55:24 by user              #+#    #+#             */
-/*   Updated: 2023/05/01 11:33:10 by user             ###   ########.fr       */
+/*   Updated: 2023/05/01 23:57:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ bool ch_eye2anyobjs(t_allinfs *infs, t_objarr *objarr, t_vecinf *eye2scr)
                 return (true);
         if (obtain_shapetype(objarr) == PLANE)
 			if (ch_eye2plane_its(eye2scr, infs, objarr->plane) == true)
+                return (true);
+        if (obtain_shapetype(objarr) == CYLINDER)
+			if (ch_eye2cylinder_its(eye2scr, infs, objarr->cylinder) == true)
                 return (true);
         objarr = objarr->next_obj;
     }

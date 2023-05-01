@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:02:13 by user              #+#    #+#             */
-/*   Updated: 2023/05/01 20:27:52 by user             ###   ########.fr       */
+/*   Updated: 2023/05/02 00:27:34 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,16 +192,25 @@ void    ready_objarr(t_fvec *fvecs)
     plane->has_specmir = false;
     plane->spec_mir = 0.0;
 
-    // static  void    ready_plane(t_plane *plane)
-// {
-//     plane->n = malloc(sizeof(t_vecinf) * 1);
-//     set_vec(plane->n, 0.0, 1.0, 0.0);
-//     plane->point = malloc(sizeof(t_vecinf) * 1);
-//     set_vec(plane->point, 0.0, -1.0, 0.0);
-//     refCoeff(&plane->t_refCoeff);
-//     plane->has_specmir = false;
-//     plane->spec_mir = 0.0;
-// }
+    t_cylinder *cylinder;
+    tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
+    tmp_obj = tmp_obj->next_obj;
+    ready_object(tmp_obj, CYLINDER);
+    cylinder = tmp_obj->cylinder;
+    cylinder->center_v = malloc(sizeof(t_vecinf) * 1);
+    set_vec(cylinder->center_v, 0.0, 0.0, 6.0);
+    cylinder->center_n_v = malloc(sizeof(t_vecinf) * 1);
+    set_vec(cylinder->center_n_v, 1.0, 1.0, 0.0);
+    refCoeff_ka(&cylinder->t_refCoeff, 0.01, 0.01, 0.01);
+    refCoeff_kd(&cylinder->t_refCoeff, 0.00, 0.60, 0.60);
+    refCoeff_ks(&cylinder->t_refCoeff, 0.00, 0.60, 0.00);
+    cylinder->t_refCoeff.Ia = 0.1;
+    cylinder->t_refCoeff.Ii = 1.0;
+    cylinder->t_refCoeff.alpha = 8.0;
+    cylinder->rad = 0.5;
+    cylinder->height = 0.3;
+    cylinder->has_specmir = false;
+    cylinder->spec_mir = 0.0;
 
     tmp_obj->next_obj = NULL;
 }
