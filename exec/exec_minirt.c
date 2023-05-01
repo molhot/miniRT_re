@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:59:08 by user              #+#    #+#             */
-/*   Updated: 2023/05/01 12:06:17 by user             ###   ########.fr       */
+/*   Updated: 2023/05/01 20:11:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static  void    render_obj(t_allinfs *infs, t_vecinf *eye2scr, size_t obj_pos, t
     if (obtain_shapetype(objarr) == BALL)
         render_ball(eye2scr, infs, objarr->ball, infs->fix_vecs->lgtarr, calc_ratio_ball(eye2scr, infs, objarr->ball));
     if (obtain_shapetype(objarr) == PLANE)
-        my_mlx_pixel_put(infs->drawinf, infs->drawinf->x, infs->drawinf->y, (int)(129 << 16) | (int)(0 << 8) | (int)(108));
+        render_plane(eye2scr, infs, objarr->plane, calc_ratio_plane(eye2scr, infs, objarr->plane));
 }
 
 void    render(t_allinfs *infs, t_vecinf *eye2scr)

@@ -18,7 +18,8 @@ SRCS	=	miniRT_main.c\
 				exec/ch_anyits/ch_eye2plane_its.c\
 				exec/calculate_ratio/cal_ratio_ball.c\
 				exec/calculate_ratio/cal_ratio_plane.c\
-				exec/render_obj/render_ball.c
+				exec/render_obj/render_ball.c\
+				exec/render_obj/render_plane.c
 
 OBJS = $(SRCS:.c=.o)
 
