@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:02:13 by user              #+#    #+#             */
-/*   Updated: 2023/05/01 00:58:39 by user             ###   ########.fr       */
+/*   Updated: 2023/05/01 11:56:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void    ready_objarr(t_fvec *fvecs)
 	ready_object(tmp_obj, BALL);
     //set ball//
     t_ball  *ball;
+
     ball = tmp_obj->ball;
     ball->center_v = malloc(sizeof(t_vecinf) * 1);
     set_vec(ball->center_v, 0.0, 0.0, 5.0);
@@ -155,6 +156,35 @@ void    ready_objarr(t_fvec *fvecs)
     ball->t_refCoeff.alpha = 8.0;
     ball->has_specmir = false;
     ball->spec_mir = 0;
+
+    t_plane *plane;
+    tmp_obj->next_obj = malloc(sizeof(t_objarr) * 1);
+    tmp_obj = tmp_obj->next_obj;
+    ready_object(tmp_obj, PLANE);
+    plane = tmp_obj->plane;
+    plane->n = malloc(sizeof(t_vecinf) * 1);
+    set_vec(plane->n, 0.0, 1.0, 0.0);
+    plane->point = malloc(sizeof(t_vecinf) * 1);
+    set_vec(plane->point, 0.0, -1.0, 0.0);
+    refCoeff_ka(&ball->t_refCoeff, 0.01, 0.01, 0.01);
+    refCoeff_kd(&ball->t_refCoeff, 0.25, 0.96, 0.11);
+    refCoeff_ks(&ball->t_refCoeff, 0.30, 0.30, 0.30);
+    plane->t_refCoeff.Ia = 0.1;
+    plane->t_refCoeff.Ii = 1.0;
+    plane->t_refCoeff.alpha = 8.0;
+    plane->has_specmir = false;
+    plane->spec_mir = 0.0;
+
+    // static  void    ready_plane(t_plane *plane)
+// {
+//     plane->n = malloc(sizeof(t_vecinf) * 1);
+//     set_vec(plane->n, 0.0, 1.0, 0.0);
+//     plane->point = malloc(sizeof(t_vecinf) * 1);
+//     set_vec(plane->point, 0.0, -1.0, 0.0);
+//     refCoeff(&plane->t_refCoeff);
+//     plane->has_specmir = false;
+//     plane->spec_mir = 0.0;
+// }
 
     tmp_obj->next_obj = NULL;
 }

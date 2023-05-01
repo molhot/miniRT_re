@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 23:39:45 by user              #+#    #+#             */
-/*   Updated: 2023/05/01 00:03:56 by user             ###   ########.fr       */
+/*   Updated: 2023/05/01 11:28:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,9 +176,11 @@ int		obtain_shapetype(t_objarr *sub);
 void    render(t_allinfs *infs, t_vecinf *eye2scr);
 bool	ch_eye2anyobjs(t_allinfs *infs, t_objarr *objarr, t_vecinf *eye2scr);
 bool    ch_eye2ball_its(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball);
+bool    ch_eye2plane_its(t_vecinf *eye2scr, t_allinfs *infs, t_plane *plane);
 
 //calc retio
 double  calc_ratio_ball(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball);
+double  calc_ratio_plane(t_vecinf *eye2scr, t_allinfs *infs, t_plane *plane);
 
 // render any objects
 void    render_ball(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball, t_lgtarr *lgtarr, double t);

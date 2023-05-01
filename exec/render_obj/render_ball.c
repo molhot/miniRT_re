@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 19:46:27 by user              #+#    #+#             */
-/*   Updated: 2023/05/01 00:37:25 by user             ###   ########.fr       */
+/*   Updated: 2023/05/01 12:05:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,11 @@ void    render_ball(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball, t_lgtarr *
     init_RGB(&R_all);
     cal_RGB(&R_all, &ball->t_refCoeff.ka, ball->t_refCoeff.Ia);
     render_ball2(ball, lgtarr, eye2scr, &ballmid2ballits, &R_all);
+    if (R_all.red > 1.0)
+        R_all.red = 1.0;
+    if (R_all.green > 1.0)
+        R_all.green = 1.0;
+    if (R_all.blue > 1.0)
+        R_all.blue = 1.0;
     my_mlx_pixel_put(infs->drawinf, infs->drawinf->x, infs->drawinf->y, (int)(255 * R_all.red) << 16 | (int)(255 * R_all.green) << 8 | (int)(255 * R_all.blue));
 }
