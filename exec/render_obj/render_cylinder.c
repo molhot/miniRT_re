@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 22:19:45 by user              #+#    #+#             */
-/*   Updated: 2023/05/02 01:28:22 by user             ###   ########.fr       */
+/*   Updated: 2023/05/03 01:32:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void     calc_its_nvec(t_vecinf *sub, t_vecinf *cylinderits_v, t_cylinder
     double      ratio;
 
     neg_vec(&middle2its, &cylinderits_v->vec, &cylinder->center_v->vec);
-    ratio = dot_vec(&middle2its.vec, &cylinder->center_n_v->vec);
-    t_neg_vec(sub, &middle2its.vec, ratio, &cylinder->center_n_v->vec);
+    ratio = dot_vec(&middle2its.vec, &cylinder->center_n_v->u_vec);
+    t_neg_vec(sub, &middle2its.vec, ratio, &cylinder->center_n_v->u_vec);
 }
 
 static void render_cylinder2(t_allinfs *infs, t_cylinder *cylinder, t_vecinf *its_v, t_vecinf *its_n, t_RGB *R_all)

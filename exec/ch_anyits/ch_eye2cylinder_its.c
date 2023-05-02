@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 22:19:42 by user              #+#    #+#             */
-/*   Updated: 2023/05/03 01:10:31 by user             ###   ########.fr       */
+/*   Updated: 2023/05/03 01:54:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static  bool    ch_its_overcylinder(t_vecinf *eye2scr, double t, t_cylinder *cyl
     double      n_center2its_dot;
 
     t_mix_vec(&its_v, &infs->fix_vecs->eye_v->vec, t, &eye2scr->vec);
-    neg_vec(&center2its, &its_v.vec, &cylinder->center_n_v->u_vec);
+    neg_vec(&center2its, &its_v.vec, &cylinder->center_v->vec);
     n_center2its_dot = dot_vec(&center2its.vec, &cylinder->center_n_v->u_vec);
     if (n_center2its_dot < 0)
         return (false);
@@ -59,7 +59,7 @@ static  bool    ch_cylinder_its_helper(t_vecinf *dn_oupro, t_vecinf *pn_oupro, t
     B = 2 * dot_vec(&dn_oupro->vec, &pn_oupro->vec);
     C = pow(pn_oupro->size, 2) - pow(cylinder->rad, 2);
     D = pow(B, 2) - 4 * A * C;
-    if (A == 0 || D < 0)
+    if (dn_oupro->size == 0 || D < 0)
         return (false);
     return (ch_its_overcylinder(eye2scr, calc_ratio_2(A, B, D), cylinder, infs));
 }
