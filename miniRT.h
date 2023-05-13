@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 23:39:45 by user              #+#    #+#             */
-/*   Updated: 2023/05/02 01:24:49 by user             ###   ########.fr       */
+/*   Updated: 2023/05/03 23:48:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,6 @@ typedef struct s_refCoeff {
     double  shinness;
 }t_refCoeff;
 
-typedef	struct s_cylinder{
-	t_vecinf	*center_v;
-	t_vecinf	*center_n_v;
-	t_refCoeff	t_refCoeff;
-	double		rad;
-	double		height;
-	bool		has_specmir;
-	double		spec_mir;
-}t_cylinder;
-
 typedef	struct s_plane{
 	t_vecinf	*n;
 	t_vecinf	*point;
@@ -102,6 +92,17 @@ typedef	struct s_plane{
 	bool		has_specmir;
 	double		spec_mir;
 }t_plane;
+
+typedef	struct s_cylinder{
+	t_vecinf	*center_v;
+	t_vecinf	*center_n_v;
+	t_refCoeff	t_refCoeff;
+	double		rad;
+	double		height;
+	t_plane		*apper_plane;
+	bool		has_specmir;
+	double		spec_mir;
+}t_cylinder;
 
 typedef	struct s_ball{
 	t_vecinf	*center_v;
@@ -124,14 +125,21 @@ struct s_objarr
 
 //above, shape infos
 
+typedef struct s_eyevec_inf
+{
+	t_vecinf	*eye_position;
+	t_vecinf	*eye_dim_vec;
+	double		FOV;
+} t_eyevec_inf;
+
 //any fixed vec(ex: item inf, eye point...) contains t_fvec(=fixedpointvec)
 //* scrnvectr is prepared when x and y point is recognized
 typedef	struct	s_fvec
 {
-	t_vecinf	*eye_v;
-	t_vecinf	*scr_v;
-	t_lgtarr	*lgtarr;
-	t_objarr	*objarr;
+	t_eyevec_inf	*eye_v;
+	t_vecinf		*scr_v;
+	t_lgtarr		*lgtarr;
+	t_objarr		*objarr;
 } t_fvec;
 
 //minilibx needs any drawinfo, above is all needs infos
@@ -172,6 +180,8 @@ void    ready_objarr(t_fvec *fvecs);
 void    exec(t_allinfs *infs);
 void	my_mlx_pixel_put(t_drawinf *data, int x, int y, int color);
 int		obtain_shapetype(t_objarr *sub);
+void    ray_trans(t_vecinf *sub, double FOV, t_vecinf *eye_dim, t_allinfs *infs, double WIDTH, double HEIGHT);
+
 // check its exist or not
 void    render(t_allinfs *infs, t_vecinf *eye2scr);
 bool	ch_eye2anyobjs(t_allinfs *infs, t_objarr *objarr, t_vecinf *eye2scr);

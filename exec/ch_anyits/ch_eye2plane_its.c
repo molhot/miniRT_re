@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:17:14 by user              #+#    #+#             */
-/*   Updated: 2023/05/01 11:08:29 by user             ###   ########.fr       */
+/*   Updated: 2023/05/04 01:02:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool    ch_eye2plane_its(t_vecinf *eye2scr, t_allinfs *infs, t_plane *plane)
     double  eye2scr_n;
 
     onepoint_n = dot_vec(&plane->point->vec, &plane->n->vec);
-    eye_n = dot_vec(&infs->fix_vecs->eye_v->vec, &plane->n->vec);
+    eye_n = dot_vec(&infs->fix_vecs->eye_v->eye_position->vec, &plane->n->vec);
     eye2scr_n = dot_vec(&eye2scr->vec , &plane->n->vec);
     if (eye2scr_n == 0.0)
         return (false);

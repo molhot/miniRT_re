@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 19:46:27 by user              #+#    #+#             */
-/*   Updated: 2023/05/01 12:05:53 by user             ###   ########.fr       */
+/*   Updated: 2023/05/04 01:03:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void    render_ball(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball, t_lgtarr *
     t_vecinf	ballmid2ballits;
     t_RGB       R_all;
 
-    t_mix_vec(&its_v, &infs->fix_vecs->eye_v->vec, t, &eye2scr->vec);
+    t_mix_vec(&its_v, &infs->fix_vecs->eye_v->eye_position->vec, t, &eye2scr->vec);
     neg_vec(&center2its, &its_v.vec, &ball->center_v->vec);
     neg_vec(&ballmid2ballits, &its_v.vec, &ball->center_v->vec);
     init_RGB(&R_all);

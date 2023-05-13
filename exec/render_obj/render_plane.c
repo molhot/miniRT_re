@@ -6,11 +6,13 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 12:12:37 by user              #+#    #+#             */
-/*   Updated: 2023/05/01 20:22:46 by user             ###   ########.fr       */
+/*   Updated: 2023/05/09 22:09:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../miniRT.h"
+
+//a - b <= epsiron
 
 static double calc_Rsplane(t_vecinf *eye2scr, t_vecinf *its2lgt, t_plane *plane, double n_l)
 {
@@ -35,7 +37,7 @@ static  void    render_plane2(t_plane *plane, t_allinfs *infs, t_vecinf *eye2scr
     t_lgtarr    *lgtarr;
 
     lgtarr = infs->fix_vecs->lgtarr;
-    neg_vec(&eye2its, &its_v->vec, &infs->fix_vecs->eye_v->vec);
+    neg_vec(&eye2its, &its_v->vec, &infs->fix_vecs->eye_v->eye_position->vec);
     while (lgtarr != NULL)
     {
         neg_vec(&its2lgt, &lgtarr->lgt_v.vec, &its_v->vec);
@@ -57,7 +59,7 @@ void    render_plane(t_vecinf *eye2scr, t_allinfs *infs, t_plane *plane, double 
     t_vecinf    its_v;
     t_RGB       R_all;
 
-    t_mix_vec(&its_v, &infs->fix_vecs->eye_v->vec, t, &eye2scr->vec);
+    t_mix_vec(&its_v, &infs->fix_vecs->eye_v->eye_position->vec, t, &eye2scr->vec);
     init_RGB(&R_all);
     cal_RGB(&R_all, &plane->t_refCoeff.ka, plane->t_refCoeff.Ia);
     render_plane2(plane, infs, eye2scr, &its_v, &R_all);

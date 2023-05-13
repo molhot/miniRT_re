@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 19:27:46 by user              #+#    #+#             */
-/*   Updated: 2023/05/02 00:01:03 by user             ###   ########.fr       */
+/*   Updated: 2023/05/04 01:00:04 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ double  calc_ratio_ball(t_vecinf *eye2scr, t_allinfs *infs, t_ball *ball)
 	double      coefficient_C;
     double      discriminant;
 
-	neg_vec(&ballmid2eye, &infs->fix_vecs->eye_v->vec, &ball->center_v->vec);
+	neg_vec(&ballmid2eye, &infs->fix_vecs->eye_v->eye_position->vec, &ball->center_v->vec);
     coefficient_A = pow(eye2scr->size, 2);
 	coefficient_B = 2 * (dot_vec(&ballmid2eye.vec, &eye2scr->vec));
 	coefficient_C = pow(ballmid2eye.size, 2) - pow(ball->rad, 2);

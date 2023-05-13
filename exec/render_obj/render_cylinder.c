@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 22:19:45 by user              #+#    #+#             */
-/*   Updated: 2023/05/03 01:32:18 by user             ###   ########.fr       */
+/*   Updated: 2023/05/04 01:03:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void  render_cylinder(t_vecinf *eye2scr, t_allinfs *infs, t_cylinder *cylinder)
     t_vecinf    its_n;
     t_RGB       R_all;
 
-    t_mix_vec(&its_v, &infs->fix_vecs->eye_v->vec, calc_ratio_cylinder(eye2scr, infs, cylinder), &eye2scr->vec);
+    t_mix_vec(&its_v, &infs->fix_vecs->eye_v->eye_position->vec, calc_ratio_cylinder(eye2scr, infs, cylinder), &eye2scr->vec);
     calc_its_nvec(&its_n, &its_v, cylinder);
     init_RGB(&R_all);
     cal_RGB(&R_all, &cylinder->t_refCoeff.ka, cylinder->t_refCoeff.Ia);

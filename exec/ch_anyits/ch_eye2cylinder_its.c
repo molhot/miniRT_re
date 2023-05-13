@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 22:19:42 by user              #+#    #+#             */
-/*   Updated: 2023/05/03 01:54:44 by user             ###   ########.fr       */
+/*   Updated: 2023/05/04 01:01:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static  bool    ch_its_overcylinder(t_vecinf *eye2scr, double t, t_cylinder *cyl
     t_vecinf    center2its;
     double      n_center2its_dot;
 
-    t_mix_vec(&its_v, &infs->fix_vecs->eye_v->vec, t, &eye2scr->vec);
+    t_mix_vec(&its_v, &infs->fix_vecs->eye_v->eye_position->vec, t, &eye2scr->vec);
     neg_vec(&center2its, &its_v.vec, &cylinder->center_v->vec);
     n_center2its_dot = dot_vec(&center2its.vec, &cylinder->center_n_v->u_vec);
     if (n_center2its_dot < 0)
@@ -70,7 +70,7 @@ bool    ch_eye2cylinder_its(t_vecinf *eye2scr, t_allinfs *infs, t_cylinder *cyli
     t_vecinf    dn_oupro;
     t_vecinf    pn_oupro;
 
-    neg_vec(&center2eye, &infs->fix_vecs->eye_v->vec, &cylinder->center_v->vec);
+    neg_vec(&center2eye, &infs->fix_vecs->eye_v->eye_position->vec, &cylinder->center_v->vec);
     calc_outerproduct(&dn_oupro, &eye2scr->vec, &cylinder->center_n_v->u_vec);
     calc_outerproduct(&pn_oupro, &center2eye.vec, &cylinder->center_n_v->u_vec);
     return (ch_cylinder_its_helper(&dn_oupro, &pn_oupro, cylinder, eye2scr, infs));

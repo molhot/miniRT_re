@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 22:19:39 by user              #+#    #+#             */
-/*   Updated: 2023/05/02 00:00:58 by user             ###   ########.fr       */
+/*   Updated: 2023/05/04 00:55:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ double  calc_ratio_cylinder(t_vecinf *eye2scr, t_allinfs *infs, t_cylinder *cyli
     t_vecinf    pn_oupro;
     double      discriminant;
 
-    neg_vec(&center2eye, &infs->fix_vecs->eye_v->vec, &cylinder->center_v->vec);
+    neg_vec(&center2eye, &infs->fix_vecs->eye_v->eye_position->vec, &cylinder->center_v->vec);
     calc_outerproduct(&dn_oupro, &eye2scr->vec, &cylinder->center_n_v->u_vec);
     calc_outerproduct(&pn_oupro, &center2eye.vec, &cylinder->center_n_v->u_vec);
 	if (ch_eye2cylinder_its(eye2scr, infs, cylinder) == true)
